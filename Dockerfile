@@ -72,6 +72,7 @@ COPY --from=backend-builder /usr/local/bin /usr/local/bin
 # Copy Application Code
 COPY src/ ./src/
 COPY config/ ./config/
+COPY models/checkpoints/ ./models/checkpoints/
 
 # Download MediaPipe Model (hand_landmarker.task) directly to avoid Git binary limits
 # Using the official MediaPipe storage URL
