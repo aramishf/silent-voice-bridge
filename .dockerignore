@@ -15,7 +15,7 @@ data/processed/
 *.pkl
 
 # Model checkpoints (will be mounted as volume)
-models/checkpoints/*.pth
+# models/checkpoints/*.pth
 models/checkpoints/*.png
 
 # IDE
