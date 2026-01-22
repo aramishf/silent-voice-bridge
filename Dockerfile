@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
     libgstreamer1.0-0 \
     libgstreamer-plugins-base1.0-0 \
+    wget \
     && rm -rf /var/lib/apt/lists/*
 
 # ----------------------------
