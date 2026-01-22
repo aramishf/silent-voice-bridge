@@ -1,0 +1,47 @@
+# ASL Fingerspelling Interpreter Configuration
+
+# Data Collection Settings
+data_collection:
+  sequence_length: 30  # Number of frames per sequence
+  fps: 30  # Frames per second
+  classes: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  samples_per_class: 150  # Target number of samples per class
+  countdown_seconds: 3  # Countdown before recording starts
+  
+# Feature Extraction Settings
+features:
+  use_hands: true
+  use_pose: false  # Set to true if you want to include pose landmarks
+  num_hand_landmarks: 21  # MediaPipe hands provides 21 landmarks per hand
+  coords_per_landmark: 3  # x, y, z coordinates
+  num_features: 258  # (21 * 3 * 2 hands) + 2 presence flags + 132 pose (if enabled)
+  
+# Model Architecture
+model:
+  input_size: 258
+  lstm_hidden_1: 128
+  lstm_hidden_2: 64
+  num_classes: 36
+  dropout: 0.3
+  bidirectional: true
+  
+# Training Settings
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 100
+  early_stopping_patience: 10
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  random_seed: 42
+  
+# Inference Settings
+inference:
+  confidence_threshold: 0.7
+  smoothing_window: 5  # Number of predictions to average
+  prediction_interval: 10  # Predict every N frames
+  show_landmarks: true
+  show_fps: true

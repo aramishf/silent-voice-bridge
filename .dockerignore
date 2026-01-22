@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Data files (too large for Docker image)
+data/raw/
+data/processed/
+*.npy
+*.pkl
+
+# Model checkpoints (will be mounted as volume)
+models/checkpoints/*.pth
+models/checkpoints/*.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation (not needed in container)
+*.md
+docs/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+.cache/

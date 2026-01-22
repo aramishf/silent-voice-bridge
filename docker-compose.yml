@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Main ASL inference service
+  asl-inference:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: silent-voice-bridge
+    
+    # Webcam and display access
+    devices:
+      - /dev/video0:/dev/video0  # Webcam access
+    
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+      - QT_X11_NO_MITSHM=1
+    
+    # Mount volumes for data persistence
+    volumes:
+      # Model checkpoints (trained models)
+      - ./models/checkpoints:/app/models/checkpoints
+      # Data directories
+      - ./data:/app/data
+      # X11 socket for GUI display
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    
+    # Network configuration
+    network_mode: host
+    
+    # Required for webcam access
+    privileged: true
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Resource limits (optional)
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+
+# Optional: Add volumes for named storage
+volumes:
+  model-data:
+    driver: local
+  training-data:
+    driver: local

@@ -1,0 +1,38 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Data files
+data/raw/*/
+data/processed/*.npy
+data/processed/*.pkl
+
+# Model checkpoints
+models/checkpoints/*.pth
+models/checkpoints/*.png
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+models/mediapipe/hand_landmarker.task
+*.png
