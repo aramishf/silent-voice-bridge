@@ -15,7 +15,7 @@ data/processed/*.npy
 data/processed/*.pkl
 
 # Model checkpoints
-models/checkpoints/*.pth
+# models/checkpoints/*.pth
 models/checkpoints/*.png
 
 # Jupyter notebooks
